@@ -27,7 +27,7 @@
         </div>
         
         <a href="/users/{{ $post->user->id }}">
-          <img src="/storage/post_images/{{ $post->id }}.jpg" class="card-img-top" />
+          <img src="data:image/png;base64,{{ $post->image }}" class="card-img-top" />
         </a>
         
         <div class="card-body">
