@@ -10,11 +10,9 @@
         <div class="card-header align-items-center d-flex">
           <a class="no-text-decoration" href="/users/{{ $post->user->id }}">
             @if ($post->user->image)
-              <p>
-                <img class="round-img" src="data:image/png;base64,{{ $post->user->image }}"/>
-              </p>
-              @else
-                <img class="round-img" src="{{ asset('/images/blank_profile.png') }}"/>
+              <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $post->user->image }}"/>
+            @else
+              <img class="post-profile-icon round-img" src="{{ asset('/images/blank_profile.png') }}"/>
             @endif
           </a>
           <a class="black-color no-text-decoration" title="{{ $post->user->name }}" href="/users/{{ $post->user->id }}">

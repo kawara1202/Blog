@@ -18,7 +18,7 @@
               
               @if ($user->image)
                 <p>
-                  <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $post->user->image }}"/>
+                  <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $user->image }}"/>
                 </p>
                 @else
                   <img class="post-profile-icon round-img" src="{{ asset('/images/blank_profile.png') }}"/>

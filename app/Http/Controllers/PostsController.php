@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Auth;
 use Validator;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class PostsController extends Controller
         $user = Auth::user();
         
         // テンプレート「post/new.blade.php」を表示します。
-        return view('post/new');
+        return view('post/new', ['user' => $user]);
         
     }
     
