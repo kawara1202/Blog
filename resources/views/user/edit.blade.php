@@ -15,10 +15,10 @@
             <label for="user_profile_photo">プロフィール写真</label><br>
                 @if ($user->image)
                   <p>
-                    <img class="round-img" src="data:image/png;base64,{{ $user->image }}"/>
+                    <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $user->image }}"/>
                   </p>
                   @else
-                    <img class="round-img" src="{{ asset('/images/blank_profile.png') }}"/>
+                    <img class="post-profile-icon round-img" src="{{ asset('/images/blank_profile.png') }}"/>
                 @endif
             <input type="file" name="user_profile_photo"  value="{{ old('user_profile_photo',$user->id) }}" accept="image/jpeg,image/gif,image/png" />
           </div>
