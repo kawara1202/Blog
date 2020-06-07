@@ -32,6 +32,9 @@ class PostsController extends Controller
     // 投稿画面の表示
     public function new()
     {
+        // ユーザー情報を取得
+        $user = Auth::user();
+        
         // テンプレート「post/new.blade.php」を表示します。
         return view('post/new');
         

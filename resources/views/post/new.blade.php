@@ -15,13 +15,15 @@
         {{csrf_field()}} 
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
-              @if ($post->user->image)
+              
+              @if ($user->image)
                 <p>
                   <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $post->user->image }}"/>
                 </p>
                 @else
                   <img class="post-profile-icon round-img" src="{{ asset('/images/blank_profile.png') }}"/>
               @endif
+              
             </div>
             <div class="col pl-0">
               <input class="form-control border-0" placeholder="キャプションを書く" type="text" name="caption" value="{{ old('list_name') }}"/>
