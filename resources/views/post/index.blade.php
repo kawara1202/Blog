@@ -19,11 +19,13 @@
             <strong>{{ $post->user->name }}</strong>
           </a>
           @if ($post->user->id == Auth::user()->id)
-          	<a class="ml-auto mx-0 my-auto" rel="nofollow" href="/postsdelete/{{ $post->id }}">
-              <div class="delete-post-icon">
-              </div>
-          	</a>
+          	<div class="delete-post-icon ml-auto mx-0 my-auto" rel="nofollow" onClick="post_delete({{$post->id}});">
+          	</div>
           @endif
+        </div>
+          
+        <div class="ml-3 mr-3 mt-2">
+          <h5>{{ $post->caption }}<h5>
         </div>
         
         <a href="/users/{{ $post->user->id }}">
@@ -31,6 +33,7 @@
         </a>
         
         <div class="card-body">
+          
           <div class="row parts">
             <div id="like-icon-post-{{ $post->id }}">
               @if ($post->likedBy(Auth::user())->count() > 0)
@@ -39,14 +42,12 @@
                 <a class="love hide-text" data-remote="true" rel="nofollow" data-method="POST" href="/posts/{{ $post->id }}/likes">いいね</a>
               @endif
             </div>
-            <a class="comment" href="#"></a>
+            @if (count($post->likes) > 0)
+              <span class="ml-1 d-flex align-items-center">{{ count($post->likes) }}人が「いいね！」しています</span>
+            @endif
           </div>
-          <div id="like-text-post-{{ $post->id }}">
-            @include('post.like_text')
-          </div>
+          
           <div>
-            <span><strong>{{ $post->user->name }}</strong></span>
-            <span>{{ $post->caption }}</span>
             <div id="comment-post-{{ $post->id }}">
               @include('post.comment_list')
             </div>
@@ -66,4 +67,19 @@
     </div>
   </div>
 @endforeach
+
+<script>
+function comment_delete(comment_id) {
+  if(confirm("本当に削除しますか？")){
+    window.location.href = "/comments/" + comment_id;
+  }
+}
+
+function post_delete(post_id) {
+  if(confirm("本当に削除しますか？")){
+    window.location.href = "/postsdelete/" + post_id;
+  }
+}
+</script>
+
 @endsection

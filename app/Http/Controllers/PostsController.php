@@ -45,7 +45,10 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //バリデーション（入力値チェック）
-        $validator = Validator::make($request->all() , ['caption' => 'required|max:255', 'photo' => 'required']);
+        $validator = Validator::make($request->all() , [
+            'caption' => 'required|max:255|min:10',
+            'photo' => 'required|file|image|mimes:jpeg,gif,png'
+        ]);
   
         //バリデーションの結果がエラーの場合
         if ($validator->fails())
@@ -58,10 +61,7 @@ class PostsController extends Controller
         $post->caption = $request->caption;
         $post->user_id = Auth::user()->id;
         $post->image = base64_encode(file_get_contents($request->photo));
-  
         $post->save();
-        
-        $request->photo->storeAs('public/post_images', $post->id . '.jpg');
         
         // 「/」 ルートにリダイレクト
         return redirect('/');
@@ -71,7 +71,9 @@ class PostsController extends Controller
     public function destroy($post_id)
     {
         $post = Post::find($post_id);
-        $post->delete();
+        if($post->user_id == Auth::user()->id){
+            $post->delete();
+        }
         return redirect('/');
     }
 }

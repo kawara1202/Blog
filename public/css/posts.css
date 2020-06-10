@@ -14,7 +14,7 @@
   color: #262626;
 }
 .parts {
-  margin: 12px 0;
+  margin: 0px 0px;
 }
 .love {
   background-image: url("/images/parts5.png");
@@ -48,6 +48,7 @@
   background-size: 20px !important;
   color: #262626;
   font-size: 20px;
+  cursor: pointer;
 }
 .loved {
   background-image: url("/images/parts7.png");
@@ -70,4 +71,5 @@
   float: right;
   margin: 5px 0 0 10px;
   background-size: 11px !important;
+  cursor: pointer;
 }

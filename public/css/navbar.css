@@ -12,18 +12,18 @@
   background-repeat: no-repeat;
   background-image: url("/images/logo.png");
 }
-.navbar-nav > li {
+.navbar-nav {
   margin-left: 20px;
 }
-.navbar-nav > li:first-child {
+.navbar-nav:first-child {
   margin-left: 0;
 }
-.navbar-nav > li .commonNavIcon {
+.navbar-nav .commonNavIcon {
   height: 24px;
   width: 24px;
   background-size: 22px !important;
   background-repeat: no-repeat;
 }
-.navbar-nav > li .profile-icon {
+.navbar-nav .profile-icon {
   background-image: url("/images/parts3.png");
 }

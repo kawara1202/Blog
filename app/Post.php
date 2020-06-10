@@ -32,4 +32,5 @@ class Post extends Model
     // ようするにselect * from like where user_id =  $user_id and post_id = $post_id
     return Like::where('user_id', $user->id)->where('post_id', $this->id);
   }
+  
 }

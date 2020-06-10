@@ -1,7 +1,7 @@
-@foreach ($post->comments as $comment) 
+@foreach ($post->comments->sortByDesc('created_at') as $comment) 
   <div class="mb-2">
     @if ($comment->user->id == Auth::user()->id)
-      <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/comments/{{ $comment->id }}"></a>
+      <p class="delete-comment" onClick="comment_delete({{$comment->id}});" data-remote="true" rel="nofollow" data-method="delete"></p>
     @endif
     <span>
       <strong>

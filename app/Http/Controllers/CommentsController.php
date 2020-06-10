@@ -21,6 +21,17 @@ class CommentsController extends Controller
     // コメントの投稿
     public function store(Request $request)
     {
+        //バリデーション（入力値チェック）
+        $validator = Validator::make($request->all() , [
+            'comment' => 'required|max:255',
+        ]);
+  
+        //バリデーションの結果がエラーの場合
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+        
         // Commentモデル作成
         $comment = new Comment;
         $comment->comment = $request->comment;
@@ -36,7 +47,9 @@ class CommentsController extends Controller
     public function destroy(Request $request)
     {
         $comment = Comment::find($request->comment_id);
-        $comment->delete();
+        if($comment->user_id == Auth::user()->id){
+            $comment->delete();
+        }
         return redirect('/');
     }
 }
